@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<link rel="stylesheet" href="third-party/bootstrap.css">
+	<link rel="stylesheet" href="third-party/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="start.less.css">
+
+	<title> VoiceNote (loading) </title>
+
+</head>
+<body>
+
+	<section id="MainScreen">
+
+		<div class="record-control">
+			<button data-action="startRecording" class="btn btn-dark start-recording">
+				<i class="fa fa-circle"></i>&nbsp;&nbsp;
+				Record new note
+			</button>
+			<button data-action="stopRecording"  class="btn btn-danger stop-recording" >
+				<i class="fa fa-stop"></i>&nbsp;&nbsp;
+				Finish
+			</button>
+		</div>
+
+		<audio class="audio-player" controls="true" tabindex="-1"></audio>
+
+		<div class="sidebar">
+			<br>
+			<div class="folders-list"></div>
+			<hr>
+			<div class="text-center create-folder">
+				<button type="button" class="btn btn-default"
+					data-action="createFolder"><i class="fa fa-plus"></i>
+
+					Add folder
+
+				</button>
+				<div class="input-wrapper"><input class="form-control hidden"></div>
+			</div>
+		</div>
+
+		<div class="list-head">
+			<div class="folder-click-area" data-action-dbl="exploreStorage"></div>
+			<div class="current-folder"> All notes </div>
+		</div>
+		<div class="details-editor">
+			<h3> Edit note details </h3>
+			<form>
+				<input name="item-capt" class="form-control">
+				<textarea name="item-desc" class="form-control"></textarea><br>
+				<div class="controls">
+					<a class="btn btn-default" data-action="cancelEditing">	Cancel			</a>
+					<a class="btn btn-primary" data-action="saveDetails"  >	Save changes	</a>
+				</div>
+			</form>
+		</div>
+		<div class="list-of-notes"><div class="wait-message"> Loading notes ... </div></div>
+		<div class="doing"> Ready </div>
+
+	</section>
+	<section id="Options">
+
+		<div class="leftside">
+			<input>
+			<input>
+			<input>
+			<input>
+		</div>
+		<div class="rightside">
+			<input type="checkbox">
+		</div>
+
+	</section>
+
+	<script src="third-party/jquery.js"></script>
+	<script src="third-party/jquery-ui.js"></script>
+	<script src="system/Scriptonit.Engine.js"></script>
+	<script src="system/Scriptonit.Helpers.js"></script>
+	<script src="helpers.js"></script>
+	<script src="options.js"></script>
+	<script src="class.VoiceNote.js"></script>
+	<script src="class.Templates.js"></script>
+	<script src="class.Cache.js"></script>
+	<script src="class.Compressor.js"></script>
+	<script src="class.Recorder.js"></script>
+	<script src="class.Player.js"></script>
+	<script src="class.NoteList.js"></script>
+	<script src="class.FolderList.js"></script>
+	<script src="class.Actions.js"></script>
+	<script src="start.js"></script>
+
+
+</body>
+</html>

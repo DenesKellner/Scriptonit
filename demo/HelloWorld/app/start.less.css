@@ -1,0 +1,6 @@
+body #MainScreen {
+  padding: 50px 80px;
+}
+body #MainScreen h1 {
+  font: 32px sans-serif;
+}

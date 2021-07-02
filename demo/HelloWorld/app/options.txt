@@ -1,0 +1,4 @@
+
+
+Use Scriptonit context menu         no
+Use web browser context menu        no

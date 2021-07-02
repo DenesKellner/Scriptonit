@@ -1,0 +1,27 @@
+
+
+//	Rules are simple but non-trivial:
+//	-	MIND THE GAP.	Separator is 2 or more whitespaces. Two tabs will do.
+//	-	NO QUOTES.		Anything after separator is the value, no need to use quotes.
+//	-	TWO SLASHES.	Anything starting with two slashes is a comment.
+//	-	NO APPENDING.	Comment can NOT be used at the end of the line (because anything after separator is the value).
+//	-	X OR COMMA.		Coordinate pairs can be written as "777x444" or "777,444"
+//
+//	Valid options are:
+//	-	Close on ESC						yes/no			Whether to close app window on pressing ESC - anywhere.
+//	-	Remember window position			yes/no			Window appears right where you quit last time.
+//	-	Remember window size				yes/no			Window will be the same size as when you quit last time.
+//	-	Follow document title changes       yes/no			Title tag (or document.title) controls app window caption.
+//	-	Initial window position				coordinates		Where your window should appear.  (Centered by default.)
+//	-	Initial window size					coordinates		Overrides remebered size.
+//	-	Path for assets						path			Unused right now
+
+
+Close on ESC						yes
+Initial window size					900x500
+Path for assets						.
+Remember window position			yes
+Remember window size				yes
+Follow document title changes		yes
+Break on script errors				yes
+Use browser context menu            no

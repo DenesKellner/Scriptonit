@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<link rel='stylesheet' href='innote.bootstrap.css'>
+<link rel='stylesheet' href='innote.export.css'>
+<link rel='stylesheet' href='custom.css'><!-- add your own, export doesn't contain it -->
+<style>
+</style>
+<body><!-- {"id":"1209","code":"reference","title":"Docs :: Reference","project":"scriptonit"} -->
+<div class='article-contents' style='margin:auto;max-width:1200px;padding:40px;'>
+
+
+            <div class="title"> 
+
+                <span class="title-group" data-group="docs"> ScriptOnIt / Docs </span>
+                <span class="title-text"> Reference </span>
+
+             </div>
+            <div class="body"> <p>We omit the Scriptonit object itself from the calls below; usually it's <code>sci</code> so the final calls will be like <code>sci.shell.shortCommand()</code> or <code>sci.exeArguments()</code>. The base interface is the only one without a group prefix.</p>
+<p><ul></p>
+<style> h3 {position:relative;left:-30px;top:10px;color:#369 !important} </style>
+<style> td:nth-of-type(1) {font:14px consolas,monospace;color:#369;vertical-align:middle !important;white-space:nowrap} </style>
+<h3>Base interface</h3>
+<p>Some really simple calls to get information about where you are and when. Later, in future versions, these calls might be outsourced into separate interface classes (almost surely a <em>Location</em> and a <em>Time</em> class will appear, but let's not spoil the surprise); anyway, right now they're here and they're very convenient without a prefix.</p>
+<table class=table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exeFilePath()</td>
+<td>Returns the path of your EXE file (without the name); always ends with backslash</td>
+</tr>
+<tr>
+<td>projectPath()</td>
+<td>Returns the path for your <code>app</code> folder</td>
+</tr>
+<tr>
+<td>workingPath()</td>
+<td>Returns the path where your exe was started from (in php, it's <code>getcwd()</code>)</td>
+</tr>
+<tr>
+<td>exeArguments()</td>
+<td>Returns all command-line arguments as one multiline string</td>
+</tr>
+<tr>
+<td>normalTime()</td>
+<td>Returns current (or a given) date/time in <code>1999-11-12 22:33:44</code> format</td>
+</tr>
+<tr>
+<td>isoTime()</td>
+<td>Returns date/time as an ISO string, like <code>1999-11-12T22:33:44.987Z</code></td>
+</tr>
+<tr>
+<td>jsTime()</td>
+<td>Returns the long textual representation of date/time, like <code>Wed Jun 30 2021 13:40:48 GMT+0200 (Central Europe Daylight Time)</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Shell interface</h3>
+<table class=table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shell.shortCommand</td>
+<td>Runs DOS command, waits for it to finish, returns output as string</td>
+</tr>
+<tr>
+<td>shell.capture</td>
+<td>Runs DOS command and starts capturing output; channels it into callback functions</td>
+</tr>
+<tr>
+<td>shell.stop</td>
+<td>Kills the running process of the last <code>shell.capture</code>; returns whether it stopped</td>
+</tr>
+<tr>
+<td>shell.stopped</td>
+<td>Checks if the last capture command has stopped (or finished)</td>
+</tr>
+</tbody>
+</table>
+<h3>Window interface</h3>
+<p>These calls only serve one purpose: to deal with the application window itself. They look plenty but they are just glorified move/resize tools. One important example is <em>window.close</em>, this is an exit point for your application. Also, <em>setTitle</em> can come in handy for reporting progress or displaying information on the taskbar while the app is in background.</p>
+<table class=table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>window.setTitle</td>
+<td>Sets the application window title (together with the taskbar caption)</td>
+</tr>
+<tr>
+<td>window.minimize</td>
+<td>Minimizes the applicaton window</td>
+</tr>
+<tr>
+<td>window.maximize</td>
+<td>Maximizes the applicaton window</td>
+</tr>
+<tr>
+<td>window.restore</td>
+<td>Restores the applicaton window to its normal state</td>
+</tr>
+<tr>
+<td><b>window.close</b></td>
+<td>Quits the application</td>
+</tr>
+<tr>
+<td>window.setPosition</td>
+<td>Sets the application window x/y position</td>
+</tr>
+<tr>
+<td>window.setLeft</td>
+<td>Sets the <code>left</code> coordinate of the window (distance from left screen edge in pixels)</td>
+</tr>
+<tr>
+<td>window.setTop</td>
+<td>Sets the <code>top</code> coordinate of the window (distance from top screen edge in pixels)</td>
+</tr>
+<tr>
+<td>window.getLeft</td>
+<td>Returns the <code>left</code> coordinate of the window; opposite of setLeft, obviously</td>
+</tr>
+<tr>
+<td>window.getTop</td>
+<td>Returns the <code>top</code> coordinate</td>
+</tr>
+<tr>
+<td>window.setSize</td>
+<td>Sets window width/height together</td>
+</tr>
+<tr>
+<td>window.setWidth</td>
+<td>Sets width individually</td>
+</tr>
+<tr>
+<td>window.setHeight</td>
+<td>Sets height individually</td>
+</tr>
+<tr>
+<td>window.getWidth</td>
+<td>Returns window width</td>
+</tr>
+<tr>
+<td>window.getHeight</td>
+<td>Returns window height</td>
+</tr>
+<tr>
+<td>window.setBorderStyle</td>
+<td>Sets window border, like <code>Sizable</code>, <code>None</code>, <a target=_blank href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.formborderstyle?view=net-5.0">and a few others</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3>File interface</h3>
+<p>For files, you don't really need more than this; a lot can be achieved thru the shell interface. (See the <em>FolderStats</em> demo app.) A next version of Scriptonit will probably be equipped with more direct tools to work with attributes, directory lists, copying/moving and so on but since you have standard DOS commands for almost everything (and you can redirect back and forth and filter and only read the final result to a string), it's really quite sufficient.</p>
+<table class=table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file.exists</td>
+<td>Checks if a file exists; full path or relative to <em>workingPath</em> is accepted</td>
+</tr>
+<tr>
+<td>file.load</td>
+<td>Loads file contents to a variable</td>
+</tr>
+<tr>
+<td>file.save</td>
+<td>Writes a string to a file</td>
+</tr>
+</tbody>
+</table>
+<h3>Audio interface</h3>
+<p>Audio interface is one call only; this is because MCI is an all-purpose language in multimedia, much like SQL, so one function will make you able to do a lot of things. The only problem is <em>how</em> - it's not easy to find a reference for MCI; I tried my best. If you look for MCI resources, you'll end up with lots of useless references from Microsoft, but keep trying - what you need is <em>MCI string interface</em>.</p>
+<table class=table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>audio.command</td>
+<td>Executes an MCI string. Here are some examples of <a target=_blank href="http://www.vb-helper.com/tutorial_mci.html#Examples">what it can do for you</a>.</td>
+</tr>
+</tbody>
+</table>
+<p></ul></p> </div>
+
+        
+</div>
+</body>
+<script src='innote.highlight.js'></script>
+<script> hljs.highlightAll(); </script>
+</html>
