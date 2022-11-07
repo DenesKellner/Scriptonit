@@ -1,8 +1,0 @@
-Sample voice 1			
-sample.20180615.000003.mp3	You can drag the notes into a folder on the left side.		Business
-sample.20180615.000001.mp3	Feel free to delete these tutorial samples.		Private
-sample.20180615.000007.mp3	Hey! Welcome to VoiceNote!		
-sample.20210628.000002.mp3	Enter does the very same thing. It's more convenient when your left hand is busy. Try Enter!		Just an idea
-sample.20210628.000003.mp3	But you can also use F3, like in Total Commander. Try selecting this note and press F3!		Just an idea
-sample.20210628.000001.mp3	Double-clicking on a note will play it. Here, try this one!		Just an idea
-sample.20180629.000007.mp3	Welcome to VoiceNote!		
