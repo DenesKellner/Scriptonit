@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<link rel='stylesheet' href='innote.bootstrap.css'>
+<link rel='stylesheet' href='innote.export.css'>
+<link rel='stylesheet' href='custom.css'><!-- add your own, export doesn't contain it -->
+<style>
+</style>
+<body><!-- {"id":"1215","code":"file-listing","title":"Docs :: Listing files","project":"scriptonit"} -->
+<div class='article-contents' style='margin:auto;max-width:1200px;padding:40px;'>
+
+
+            <div class="title"> 
+
+                <span class="title-group" data-group="docs"> ScriptOnIt / Docs </span>
+                <span class="title-text"> Listing files </span>
+
+             </div>
+            <div class="body"> <p>Listing files is quite easy, but it has 4 slightly different output formats:</p>
+<pre><code class="language-js">//  Simple
+    let myList = sci.file.list("d:\\home\\voices\\Allison");
+
+//  Files only
+    let myList = sci.file.listFiles("d:\\home\\voices\\Allison");
+
+//  Directories only
+    let myList = sci.file.listDirs("d:\\home\\voices\\Allison");
+
+//  Files with details: modtime, size, name
+    let myList = sci.file.listDetails("d:\\home\\voices\\Allison");</code></pre>
+<p>These calls give you a multiline string, that is, items separated by <code>\n</code> character; the last one will also have the details, using Tab (<code>\t</code>) between fields. The order of fields is always <code>modtime, size, name</code>.</p>
+<p>Each of the four functions can handle a second parameter, which is a file mask:</p>
+<pre><code class="language-js">    let myList = sci.file.listDetails("d:\\home\\voices\\Allison","*.txt");</code></pre>
+<p>This will give you a detailed list, but with <code>.txt</code> files only.</p> </div>
+
+        
+</div>
+</body>
+<script src='innote.highlight.js'></script>
+<script> hljs.highlightAll(); </script>
+</html>

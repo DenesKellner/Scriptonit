@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<link rel='stylesheet' href='innote.bootstrap.css'>
+<link rel='stylesheet' href='innote.export.css'>
+<link rel='stylesheet' href='custom.css'><!-- add your own, export doesn't contain it -->
+<style>
+</style>
+<body><!-- {"id":"1216","code":"app-options","title":"Docs :: Application options","project":"scriptonit"} -->
+<div class='article-contents' style='margin:auto;max-width:1200px;padding:40px;'>
+
+
+            <div class="title"> 
+
+                <span class="title-group" data-group="docs"> ScriptOnIt / Docs </span>
+                <span class="title-text"> Application options </span>
+
+             </div>
+            <div class="body"> <p>If you have a file named <code>options.txt</code> in the <code>app/</code> folder, you can set some configuration options for Scriptonit that you could not achieve from within your application. Omitting this file is allright; all settings have defaults. But if you don't want your users to be able to exit with Alt+F4, or want to change the default dimensions of the application window, here's how it's done. <em>(the ending comments are optional, thank you Captain Obvious)</em></p>
+<pre><code class="language-less">Close on ESC                        yes             //  it's off by default; if on, app window will close on ESC
+Initial window size                 900x500         //  you can give your app a window dimension on first start
+Initial window position             100,100         //  if you want to start on a specific part of screen
+Initial border style                none            //  usually sizable or none; sizable is the default
+Maximum window size                 1200x800        //  don't let window grow bigger than this
+Minimum window size                 300x200         //  don't let window shrink smaller than this
+Always on top                       no              //  you can make your window stay-on-top
+Remember window position            yes             //  whether to start at the last window position next time
+Remember window size                yes             //  whether to start with the last window size next time
+Follow document title changes       yes             //  you can change the window title from js (document.title)
+Break on script errors              yes             //  whether to stop when there's a javascript error
+Use web browser context menu        no              //  right-clicking will pop up the good old browser page menu
+Use web browser hotkeys             no              //  things like F5 to refresh; also off by default
+Use Scriptonit context menu         no              //  Scriptonit has its own context menu; enabled by default</code></pre>
+<p>As you can see, the file format is <em>very simple</em>, it probably doesn't need much explanation. However it's important to note that at least 3 spaces or a tab is required between the columns. (Makes sense btw) Also, there are some non-trivials:</p>
+<ul>
+<li><strong>No quotes needed</strong> - anything after the separator spaces will be considered as one string.</li>
+<li><strong>Comments are tricky</strong> - you can start a line with <code>//</code>, but to append a comment, use 3+ spaces before <code>//</code>!</li>
+<li><strong>AxB means A,B</strong> - when specifying coordinate pairs, you can use the letter <code>x</code> as a separator. </li>
+<li><strong>Many ways to bool</strong> - you can say yes, no, true, false, on, off, enabled or disabled.</li>
+</ul>
+<p>That's all you need to know.</p> </div>
+
+        
+</div>
+</body>
+<script src='innote.highlight.js'></script>
+<script> hljs.highlightAll(); </script>
+</html>

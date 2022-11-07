@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<link rel='stylesheet' href='innote.bootstrap.css'>
+<link rel='stylesheet' href='innote.export.css'>
+<link rel='stylesheet' href='custom.css'><!-- add your own, export doesn't contain it -->
+<style>
+</style>
+<body><!-- {"id":"1214","code":"capturing-shell-output","title":"Docs :: Capturing shell output","project":"scriptonit"} -->
+<div class='article-contents' style='margin:auto;max-width:1200px;padding:40px;'>
+
+
+            <div class="title"> 
+
+                <span class="title-group" data-group="docs"> ScriptOnIt / Docs </span>
+                <span class="title-text"> Capturing shell output </span>
+
+             </div>
+            <div class="body"> <p>There are two ways to capture console outputs. The first one is for short operations that take practically no time, like a <code>dir</code> command within one folder. For more time-consuming operations, you have to do a little more (but it's still very simple) - start capturing and provide two callbacks: one for following the progress as it goes, and another to be called when the operation has finished. This is an asynchronous way so you can go on doing other jobs &amp; reacting on user interface; you can also stop the running process prematurely.</p>
+<p>Let's see them in detail!</p>
+<h2>shell.shortCommand</h2>
+<p><ul>
+Here's a short example that captures a directory list from the MS-DOS shell:</p>
+<pre><code class="language-js">let x = sci.shell.shortCommand("dir d:\\projects\\wendy");
+
+/*
+Now x will look like:
+----------------------------------------------------------------------
+
+ Volume in drive D is Data Drive
+ Volume Serial Number is BE32-C92B
+
+ Directory of d:\projects\wendy
+
+2018-06-02  01:30    &lt;DIR&gt;          .
+2018-06-02  01:30    &lt;DIR&gt;          ..
+2018-05-31  18:35    &lt;DIR&gt;          BlackPanel
+2018-05-30  19:43    &lt;DIR&gt;          Hollister
+2018-05-30  19:54    &lt;DIR&gt;          Coke
+2021-06-15  11:09    &lt;DIR&gt;          TrainWreck
+2018-04-11  00:03    &lt;DIR&gt;          QuickNote
+2018-05-17  09:45    &lt;DIR&gt;          SilentRunner
+2018-05-19  14:52            44,911 BrowserTester.exe
+               1 File(s)          44,911 bytes
+               8 Dir(s)  766,320,148,096 bytes free
+
+*/</code></pre>
+<p>It's a normal multiline string, it's immediately available as a return value, can't be more convenient. But make sure you don't run into edge cases; some operations can go wild when used without appropriate care. A typical example would be a <code>dir /s</code> which, if launched in your main volume root, lists literally every file on the drive and gives you the impression that your app is frozen (while eating up half of your CPU in the meantime). So, simplicity comes at a low but inevitable price: <strong>make sure it's what you ask for will finish fast</strong>. Users can tolerate a little lag but don't test their patience.
+</ul></p>
+<h2>shell.capture</h2>
+<p><ul>
+Again, let's start with the example:</p>
+<pre><code class="language-js">var collectedOutput = "";
+sci.shell.capture(
+    "dir d:\\projects\\wendy /s",
+    function(x) { collectedOutput += x; },
+    function() { doSomethingWith(collectedOutput); }
+);
+</code></pre>
+<p>For the sake of brevity, we used very simple functions here, practically the minimum that's still viable. The first argument is a command, obviously; the second is the callback function for following the progress (it gets called many times while the process is running), and the third one is where we already know it's over. </p>
+<p>The <strong>follow callback</strong> has a string argument input: you can see it's declared as <code>function(x) {...}</code>, where x always gets the latest piece of console output as it happens. If you just stitch them together as a string, you get the full output at the end of the day. Here in the example, our variable <code>collectedOutput</code> gets all the pieces and that's what we use in the <strong>finish callback</strong> function, giving it to a hypothetical <code>doSomethingWith</code> function.</p>
+<p>You can see a nice example of this mechanism in <code>FolderSizes</code> demo application.
+</ul></p> </div>
+
+        
+</div>
+</body>
+<script src='innote.highlight.js'></script>
+<script> hljs.highlightAll(); </script>
+</html>

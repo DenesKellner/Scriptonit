@@ -1,0 +1,8 @@
+
+Close on ESC                        yes
+Initial window size                 1300x800
+Remember window position            yes
+Remember window size                yes
+Follow document title changes       yes
+Use web browser context menu        no
+Use Scriptonit context menu         no

@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<link rel='stylesheet' href='innote.bootstrap.css'>
+<link rel='stylesheet' href='innote.export.css'>
+<link rel='stylesheet' href='custom.css'><!-- add your own, export doesn't contain it -->
+<style>
+</style>
+<body><!-- {"id":"1212","code":"hello-world","title":"Docs :: Building a Hello World app","project":"scriptonit"} -->
+<div class='article-contents' style='margin:auto;max-width:1200px;padding:40px;'>
+
+
+            <div class="title"> 
+
+                <span class="title-group" data-group="docs"> ScriptOnIt / Docs </span>
+                <span class="title-text"> Building a Hello World app </span>
+
+             </div>
+            <div class="body"> <div style='margin-bottom:-40px;'></div>
+<h2>The bare minimum</h2>
+<p><ul>
+There is an example program called Hello World.  With this, you can easily
+understand the anatomy of a Scriptonit application; right now we only need 2 files:</p>
+<ul>
+<li><code>HelloWorld.exe</code>, the main executable (it's the same for every project, you'll see why)</li>
+<li><code>app/start.html</code>, the entry point of the HTML/JS/CSS world</li>
+</ul>
+<p>This is <em>the simplest possible app</em>.<br>It also demonstrates all the rules we have:</p>
+<ul>
+<li>The application folder name is always <code>app</code></li>
+<li>The entry point file is always <code>start.html</code></li>
+<li>The exe file must be one level higher than start.html</li>
+</ul>
+<p>In the HTML file, you'll see no magic:</p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt; Your first app! &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    Hello World!
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>This is correct, in theory. Let's make a few modifications because Edge is a special beast and it needs to know that it should <em>actually behave like Edge</em>, not the long-forgotten nightmare called Internet Explorer. For this, we need some extra lines.</p>
+<p>As you can see, there's nothing special here, other than the second <em>meta</em> tag; this is required for Edge to actually behave like Edge, not some stupid Internet Explorer. Apart from this, everything is pretty straightforward if you've ever worked with HTML. </p>
+<p>Later, the <em>&lt;title&gt;</em> tag will become your application window's title; in a while we'll see how that works.  But first, let's set the title another way - and for this, we'll need the JS library called the Scriptonit engine. </p>
+<p></ul></p>
+<h2>Adding the Scriptonit engine</h2>
+<p>Let's add one line before the closing line of the body:</p>
+<pre><code class="language-html">&lt;script src="Scriptonit.Engine.js"&gt;&lt;/script&gt;</code></pre>
+<p>So now the body looks like:</p>
+<pre><code class="language-html">&lt;body&gt;
+
+    Hello World!
+
+    &lt;script src="Scriptonit.Engine.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+<p>Now we have the functions ready to use but we're not actually using them;
+so it's time to start some Javascript coding.  For this, we add another
+line:</p>
+<pre><code class="language-html">&lt;body&gt;
+
+    Hello World!
+
+    &lt;script src="Scriptonit.Engine.js"&gt;&lt;/script&gt;
+    &lt;script src="start.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+<p>...and of course we must add the file <em>system/Scriptonit.Engine.js</em> to the
+project.  But usually it's already there.
+Now let's create a <em>start.js</em> from scratch (in <em>app</em> folder, like
+everything else):</p>
+<pre><code class="language-js">var sci = new ScriptonitInterface();    // create an instance
+sci.window.setTitle("Hey check out my first app!");</code></pre>
+<p>That was easy:</p>
+<img src='cached.5360f624ad355691e47f78855cd86352.png'>
+<p>Now we have the window title under control.</p>
+<h2>Automatic reloading</h2>
+<p><ul></p>
+<p>Leave your application running now, and try to edit the window title in
+the Javascript file!  As you can see, your running exe file monitors the
+source folder so your title <em>instantly changes as you modify the source</em>.
+How cool, isn't it?  This is called the <em>Auto-reload</em> feature.  You can
+turn this off if it's annoying - just right click anywhere on your window
+and flip the switch:</p>
+<img src='cached.7204538d2273ffe5fb72a576752c17b2.png' class="plain">
+<p>As you can see there are hotkeys for everything.  (If your application
+wants to use these hotkeys for something else, they can be turned off,
+more on that later.)  F2 is quite simple, it's for manual reloading; F5
+also works because you're inside a browser.</p>
+<p></ul></p>
+<h2>Working with styles</h2>
+<p><ul>
+Let's add a stylesheet now!  Scriptonit supports LESS and CSS stylesheets,
+so if you only know CSS you won't get into trouble - just start doing what
+you'd normally do, add the &lt;link&gt; tag in the head section of your html
+file:</p>
+<pre><code class="language-html">&lt;head&gt;
+    &lt;meta http-equiv="content-type" content="text/html; charset=utf-8" /&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=EDGE" /&gt;
+    &lt;link rel="stylesheet" href="start.css"&gt;
+    &lt;title&gt; Your first app! &lt;/title&gt;
+&lt;/head&gt;</code></pre>
+<p>And now you can style the hell out of your contents:</p>
+<pre><code class="language-css">body {
+    padding: 30px 40px;
+    font: 20px arial;
+    color: steelblue;
+}</code></pre>
+<img src='cached.de8aeda8a86549856dd8279da97adb76.png'>
+<p>A lot more attractive, right?...  Now if you prefer LESS, all you have to
+do is rename your file <em>start.less</em> and include <em>less2css.exe</em> in the
+project.  (It's also there by default.)  This compiler automatically
+translates our <em>something.less</em> file into a <em>something.less.css</em>, so
+we should now modify the start.html link tag too:</p>
+<pre><code class="language-html">&lt;link rel="stylesheet" href="start.less.css"&gt;</code></pre>
+<p>It's IMPORTANT to know that the less-to-css transformation only happens
+automatically when <em>the application is running AND you change the .less
+file</em>.  This is very convenient but also a bit confusing for the first
+time - so if you don't see your styles right away, leave the app running
+and change something in start.less!  (An empty line will do nicely.)  It
+should be refreshed now; and there's a new file called <em>start.less.css</em>
+which is freshly created by <em>less2css.exe</em>.  You won't have to worry about
+these guys anymore, just focus on start.less and everything else happens
+like magic.
+</ul></p>
+<h2>How a normal project looks</h2>
+<p><ul>
+Now that we have a few more files, let's see what a typical Scriptonit
+project looks like:</p>
+<pre><code class="language-js">    NameOfYourApp.exe               //  The main launcher exe, renamed to whatever you like
+    dev/less2css.exe                //  LESS to CSS compiler; you only need it in devtime
+    system/Scriptonit.Engine.js     //  The Scriptonit Engine itself
+    system/Scriptonit.Helpers.js    //  Some helper functions; not required but makes your life easier!
+    app/start.html                  //  Your little autoexec :)
+    app/start.js                    //  You know this one, we've just created it
+    app/start.less                  //  If you only ever use CSS, you won't even need this. But why not.
+    app/start.less.css              //  This is generated from start.less</code></pre>
+<p><em>Note: whatever you put in <code>dev/</code> is, by convention, only needed in devtime; like less2css.exe, it's only necessary when you keep changing your .less files, and once they're ready to fly, they have their css counterparts so they're all you need.</em></p>
+<p></ul></p>
+<h2>Conclusion</h2>
+<p><ul>
+Now that you have an understanding of Scriptonit files, try to create something more useful! You can copy one of the demo apps and rename the exe, then gradually change the html/js/less/css files inside. You'll see everything change in the window in realtime. If you've done something awesome, please let me know; developer@deneskellner.com is always open for user-contributed tools!
+</ul></p> </div>
+
+        
+</div>
+</body>
+<script src='innote.highlight.js'></script>
+<script> hljs.highlightAll(); </script>
+</html>
