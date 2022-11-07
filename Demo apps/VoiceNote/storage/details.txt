@@ -1,0 +1,8 @@
+Sample voice 1			
+sample.20180615.000003.mp3	You%20can%20organize%20your%20notes%20in%20folders!		Something%20like%20ths
+sample.20180615.000001.mp3	These%20are%20just%20samples.		Private
+sample.20180615.000007.mp3	Hey!%20Welcome%20to%20VoiceNote!		Something%20like%20ths
+sample.20210628.000002.mp3	Amazing!		Something%20like%20ths
+sample.20210628.000003.mp3	Let's%20do%20it!		Just%20an%20idea
+sample.20210628.000001.mp3	Way%20to%20go!		Just%20an%20idea
+undefined	undefined		Something

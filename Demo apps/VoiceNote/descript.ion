@@ -1,0 +1,4 @@
+﻿
+app This is where you keep your app-specific data
+ext External products, like LAME encoder
+storage Everything your app may store; see options.js to change it

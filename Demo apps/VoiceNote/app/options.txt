@@ -1,0 +1,13 @@
+
+
+Close on ESC                        no
+Initial border style                Sizable
+Initial window size                 1100x800
+Maximum window size                 none
+Minimum window size                 700x500
+Path for assets                     .
+Remember window position            yes
+Remember window size                yes
+Follow document title changes       yes
+Break on script errors              no
+Use web browser hotkeys             yes
