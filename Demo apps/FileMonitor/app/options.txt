@@ -1,0 +1,10 @@
+//  n-81tpj8cv
+
+Close on ESC                        yes
+Initial window size                 900x500
+Path for assets                     .
+Remember window position            yes
+Remember window size                yes
+Follow document title changes       yes
+Break on script errors              no
+Use web browser hotkeys             yes

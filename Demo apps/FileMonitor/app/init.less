@@ -1,0 +1,18 @@
+// #importOnly
+
+@baseFont: Arial,Helvetica,sans-serif;
+
+body,div,span,p,td,th,input,select,textarea,h1,h2,h3,h4,h5,h6 {font-family:@baseFont;}
+body {overflow:hidden;}
+
+#OuterBox {
+    position:absolute;left:0px;top:0px;bottom:0px;right:0px;height:100vh;
+    overflow-x:hidden;
+    &.scroll-hidden {right:-50px;}
+    &.scroll-disabled {overflow-y:hidden;}
+}
+
+#MainScreen {
+    width:100vw;
+    height:100%;
+}

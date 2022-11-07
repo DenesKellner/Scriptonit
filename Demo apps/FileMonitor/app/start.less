@@ -1,0 +1,70 @@
+
+@import helpers;
+@import init;
+
+* {box-sizing:border-box;}
+
+body {
+    background:#111;
+    overflow:hidden;
+    margin:0;padding:0;
+}
+
+main {
+    font:15px tahoma;
+    color:silver;
+}
+
+header {
+    position:fixed;
+    top:0;left:0;right:0;
+    height:50px;
+    background:#333;
+    padding:6px 0 0 20px;
+    color:silver;
+    label {
+        display:inline-block;
+        height:38px;
+        input[type=checkbox] {
+            margin-right:4px;width:15px;height:15px;margin-bottom:-2px;
+            border:none;outline:none !important;
+            user-select:none;
+        }
+    }
+    .btn {height:38px;border-color:black;}
+    .btn:focus {outline:none !important;};
+}
+
+loading-message {
+    position:absolute;
+    top:48vh;
+    left:50%;
+    transform:translateX(-50%) translateY(-50%);
+}
+
+content-display {
+    position:fixed;
+    top:50px;bottom:0;left:0;right:0;
+    display:block;
+    visibility:hidden;
+    white-space:pre;
+    margin:0;
+    padding:2vh 3vw;
+    overflow:auto;
+    font:15px Consolas;
+    color:yellowgreen - 22;
+}
+
+button.btn.dimmed {
+    opacity:0.2;
+}
+
+.btn.btn-dark {
+    background:linear-gradient(black + 108, black + 75);
+    color:#ddd;
+    border-color:black;
+}
+
+button#onoff {width:100px;}
+
+input[type=checkbox]:active {background:silver;};

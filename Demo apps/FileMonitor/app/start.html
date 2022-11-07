@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="start.less.css">
+    <link rel="shortcut icon" href="folder.png" type="image/png"><!-- nice try -->
+    <script src="jquery.js"></script>
+    <script src="../system/Scriptonit.Engine.js"></script>
+    <script src="../system/Scriptonit.Helpers.js"></script>
+    <script src="helpers.js"></script>
+    <script src="start.js"></script>
+
+    <title> Loading ... </title>
+
+</head>
+<body onload="app.initialize()">
+
+    <section id="OuterBox" class="scroll-disabled">
+        <section id="MainScreen">
+
+            <header>
+                <button class="btn btn-success" id="onoff" data-value="1" onclick="toggleWatching(this)"> Enabled </button>
+                <label class="btn btn-dark"><input type=checkbox name=sound> Sound </label>
+                <label class="btn btn-dark"><input type=checkbox name=follow> Scroll to end </label>
+            </header>
+
+            <main>
+
+                <loading-message>
+                    Loading ...
+                </loading-message>
+
+                <content-display>
+                </content-display>
+
+            </main>
+
+        </section>
+    </section>
+
+
+</body>
+</html>

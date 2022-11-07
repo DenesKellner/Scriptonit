@@ -1,0 +1,40 @@
+
+@Black10 : rgba(0,0,0, 0.10);   @White10 : rgba(255,255,255, 0.10);     //  black & white, opacity = 10%
+@Black20 : rgba(0,0,0, 0.20);   @White20 : rgba(255,255,255, 0.20);     //  black & white, opacity = 20%
+@Black30 : rgba(0,0,0, 0.30);   @White30 : rgba(255,255,255, 0.30);     //  black & white, opacity = 30%
+@Black40 : rgba(0,0,0, 0.40);   @White40 : rgba(255,255,255, 0.40);     //  ...
+@Black50 : rgba(0,0,0, 0.50);   @White50 : rgba(255,255,255, 0.50);     //  ...
+@Black60 : rgba(0,0,0, 0.60);   @White60 : rgba(255,255,255, 0.60);     //  ...
+@Black70 : rgba(0,0,0, 0.70);   @White70 : rgba(255,255,255, 0.70);     //  ...
+@Black80 : rgba(0,0,0, 0.80);   @White80 : rgba(255,255,255, 0.80);     //  ...
+@Black90 : rgba(0,0,0, 0.90);   @White90 : rgba(255,255,255, 0.90);     //  ...
+@Black25 : rgba(0,0,0, 0.25);   @White25 : rgba(255,255,255, 0.25);     //  black & white, opacity = 25%
+@Black75 : rgba(0,0,0, 0.75);   @White75 : rgba(255,255,255, 0.75);     //  black & white, opacity = 75%
+
+.fillViewport   () {width:100vw;height:100vh;}
+.fillContainer  () {width:100%;height:100%;}
+.coverViewport  () {position:fixed;top:0;left:0;.fillViewport();}
+.dashOutline    (@c) {outline:1px dashed @c;outline-offset:-2px;}
+.selfCenter     () {align-self:center;justify-self:center;}
+.clickThru      () {pointer-events:none;}
+.centerback     () {background-repeat:no-repeat;background-position:center center;}
+.cover          () {.centerback();background-size:cover;}
+.contain        () {.centerback();background-size:contain;}
+.containImage   (@src) {.contain();background-image:url(@src)}
+.coverImage     (@src) {.cover();  background-image:url(@src)}
+.block          () {display:block;}
+.left           () {text-align:left;}
+.center         () {text-align:center;}
+.right          () {text-align:right;}
+.justify        () {text-align:justify;}
+.clearfix       () {&:before,&:after {content: " ";display: table;}&:after {clear:both;}}
+.upper          () {text-transform:uppercase;}
+.nowrap         () {white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.hide           () {display:none;}
+.hidden         () {display:none;}
+.hideCell       () {display:none;}
+.showCell       () {display:table-cell;}
+.bold           () {font-weight:bold;}
+.notbold        () {font-weight:normal;}
+.italic         () {font-style:italic;}
+.notitalic      () {font-style:normal;}
